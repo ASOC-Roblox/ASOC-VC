@@ -2,6 +2,7 @@
 
 const { EmbedBuilder, SlashCommandBuilder, Colors, MessageFlags, ChatInputCommandInteraction, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const UserStats = require(`${PROJECT_ROOT}/data/UserStats`);
+const config = require(`${PROJECT_ROOT}/config.json`);
 
 /**
  * @param {number} n
@@ -21,9 +22,10 @@ async function getDisplayEmbed(n) {
     .setColor(Colors.Yellow)
     .setTimestamp();
 
+    const EMOJI_MEDALS = [`🥇`, `🥈`, `🥉`];
     let fieldDescription = ``;
     for (let i = startPaging; i <= endPaging; i++) {
-        fieldDescription += `**#${i+1}:** <@${users[i].discordId}> - <:promotion_point:959090715923726346>${users[i].promoPoints}\n`;
+        fieldDescription += `${(i <= 2) ? `${EMOJI_MEDALS[i]} ` : ""}**#${i+1}:** <@${users[i].discordId}> - ${config.emojis.misc["promotion-points"][process.env.THIS_ENVIRONMENT]}${users[i].promoPoints}\n`;
     }
 
     sendEmbed.addFields({
