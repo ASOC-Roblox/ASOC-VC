@@ -1,14 +1,21 @@
 "use strict";
 
-const { EmbedBuilder, Colors, MessageFlags } = require('discord.js');
+const { EmbedBuilder, Colors, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
 const config = require(`${PROJECT_ROOT}/config.json`);
 
+/**
+* @param {ChatInputCommandInteraction} interaction
+*/
 module.exports = async (interaction) => {
     let userRoles = interaction.member.roles;
     let canUseCmd = (
         userRoles.cache.has(config.clearances['Defense-Official'][process.env.THIS_ENVIRONMENT]) ||
         userRoles.cache.has(config.clearances['General-Officer'][process.env.THIS_ENVIRONMENT]) ||
-        userRoles.cache.has(config.units.HQASOC[process.env.THIS_ENVIRONMENT])
+        userRoles.cache.has(config.units.HQASOC[process.env.THIS_ENVIRONMENT]) ||
+        userRoles.cache.has(config.units.SWCS[process.env.THIS_ENVIRONMENT]) ||
+        userRoles.cache.has(config.units.SFOI[process.env.THIS_ENVIRONMENT]) || 
+        userRoles.cache.has(config.units.NCOA[process.env.THIS_ENVIRONMENT]) || 
+        userRoles.cache.has(config.units.DOTD[process.env.THIS_ENVIRONMENT])
     );
         
     if (!canUseCmd) {
@@ -18,7 +25,9 @@ module.exports = async (interaction) => {
         .setColor(Colors.NotQuiteBlack)
         .setTimestamp();
 
-        await interaction.reply({embeds: [embed], flags: MessageFlags.Ephemeral});
+        if (interaction.deferred) await interaction.editReply({embeds: [embed], flags: MessageFlags.Ephemeral});
+        else await interaction.reply({embeds: [embed], flags: MessageFlags.Ephemeral});
+        
         return false;
     }
 
