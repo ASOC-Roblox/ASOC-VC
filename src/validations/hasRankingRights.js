@@ -11,7 +11,11 @@ module.exports = async (interaction) => {
     let canUseCmd = (
         userRoles.cache.has(config.clearances['Defense-Official'][process.env.THIS_ENVIRONMENT]) ||
         userRoles.cache.has(config.clearances['General-Officer'][process.env.THIS_ENVIRONMENT]) ||
-        userRoles.cache.has(config.units.HQASOC[process.env.THIS_ENVIRONMENT])
+        userRoles.cache.has(config.units.HQASOC[process.env.THIS_ENVIRONMENT]) ||
+        userRoles.cache.has(config.units.SWCS[process.env.THIS_ENVIRONMENT]) ||
+        userRoles.cache.has(config.units.SFOI[process.env.THIS_ENVIRONMENT]) || 
+        userRoles.cache.has(config.units.NCOA[process.env.THIS_ENVIRONMENT]) || 
+        userRoles.cache.has(config.units.DOTD[process.env.THIS_ENVIRONMENT])
     );
         
     if (!canUseCmd) {
