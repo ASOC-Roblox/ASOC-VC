@@ -11,7 +11,7 @@ const player = createAudioPlayer();
 let MUSIC_QUEUE = [];
 let paused = false;
 let inBetweenSongs = false;
-let connection, currentChannel, currentSong;
+let connection, currentChannel, currentSong, resource;
 let loopMode = "off";
 
 /**
@@ -173,6 +173,43 @@ function getQueue() {
     return send;
 }
 
+function getVolume() {
+    if (player.state.status !== AudioPlayerStatus.Playing) {
+        throw new Error("The bot is not actively playing anything!");
+    }
+
+    if (!resource) {
+        throw new Error("The bot is not actively playing anything!");
+    }
+
+    return resource.volume.volumeLogarithmic * 100;
+}
+
+function setVolume(interaction, newVol) {
+    let voiceChannel = interaction.member.voice.channel;
+    if (currentChannel && (currentChannel.id !== voiceChannel.id)) {
+        throw new Error("You must be in the same voice channel as the bot to change the playback volume!");
+    }
+
+    if (player.state.status !== AudioPlayerStatus.Playing) {
+        throw new Error("The bot is not actively playing anything!");
+    }
+
+    if (!resource) {
+        throw new Error("The bot is not actively playing anything!");
+    }
+
+    if (newVol < 1) {
+        throw new Error("The bot cannot go quieter than 1% volume!");
+    }
+
+    if (newVol > 200) {
+        throw new Error("The bot cannot go louder than 200% volume!");
+    }
+
+    resource.volume.setVolumeLogarithmic(newVol / 100);
+}
+
 function playAudio(audio) {
     let audioProcess;
     let metadata = audio.metadata;
@@ -238,8 +275,9 @@ function playAudio(audio) {
     }
 
     currentSong = audio;
-    const resource = createAudioResource(audioProcess.stdout, {
+    resource = createAudioResource(audioProcess.stdout, {
         inputType: StreamType.Arbitrary,
+        inlineVolume: true,
     });
 
     player.play(resource);
@@ -260,7 +298,11 @@ function handleSongEnd() {
             case 'off': {
                 if (MUSIC_QUEUE.length > 0) MUSIC_QUEUE.shift();
                 if (MUSIC_QUEUE.length > 0) playAudio(MUSIC_QUEUE[0]);
-                else currentSong = null;
+                else {
+                    currentSong = null;
+                    resource = null;
+                }
+                
                 break;
             }
 
@@ -315,4 +357,4 @@ function setLoopMode(mode) {
     loopMode = mode;
 }
 
-module.exports = {addSongToQueue, getCurrentSong, removeSongInQueue, getLoopMode, setLoopMode, getQueue, skipSong, clearQueue, pauseSong, resumeSong};
+module.exports = {addSongToQueue, getCurrentSong, removeSongInQueue, getLoopMode, setLoopMode, getQueue, skipSong, clearQueue, pauseSong, resumeSong, getVolume, setVolume};

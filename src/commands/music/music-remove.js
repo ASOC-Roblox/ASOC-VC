@@ -1,6 +1,6 @@
 "use strict";
 
-const { SlashCommandBuilder, EmbedBuilder, Colors, MessageFlags, ChatInputCommandInteraction, MessageActivityType } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, Colors, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
 
 const { convertToPrettyTime } = require(`${PROJECT_ROOT}/utils/dateConv.js`);
 const { escapeDiscordMarkdown } = require(`${PROJECT_ROOT}/utils/discordUtils.js`);
