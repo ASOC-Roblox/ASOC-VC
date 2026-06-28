@@ -124,7 +124,7 @@ module.exports = {
                     .setColor(Colors.Red)
                     .setTimestamp();
 
-                    await interaction.reply({embeds: [embed]});
+                    await interaction.editReply({embeds: [embed]});
                     return;
 
                     let input = interaction.options.getString(`video`, true);
