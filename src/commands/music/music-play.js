@@ -121,6 +121,10 @@ module.exports = {
                     let embed = new EmbedBuilder()
                     .setTitle(`❌ YouTube Playback Unavailable`)
                     .setDescription(`Due to technical issues regarding YouTube playback (mainly regarding the fact that YouTube consistently blocks the bot from downloading content), it is unavailable at this time. In later versions, YouTube music functionality may either be fixed or removed altogether. For the time being, use /play from-local.`)
+                    .setColor(Colors.Red)
+                    .setTimestamp();
+
+                    await interaction.reply({embeds: [embed]});
                     return;
 
                     let input = interaction.options.getString(`video`, true);
