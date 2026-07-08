@@ -1,7 +1,7 @@
 {
   "name": "asoc-vc",
-  "version": "1.5.15",
-  "build": "76",
+  "version": "1.5.16",
+  "build": "77",
   "description": "",
   "main": "src/index.js",
   "scripts": {
