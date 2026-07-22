@@ -122,10 +122,15 @@
                 "PRODUCTION": ":dove:",
                 "TESTING": ":dove:"
             },
-            
-            "100": {
+
+            "80": {
                 "PRODUCTION": "<:VA:1404755709765353512>",
                 "TESTING": "<:VA:1491463181120438452>"
+            },
+
+            "85": {
+                "PRODUCTION": ":handshake:",
+                "TESTING": ":handshake:"
             },
 
             "101": {

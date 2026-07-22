@@ -8,7 +8,8 @@ const { getGroup, getRankInGroup, getRankNameInGroup, getAuthenticatedUser, getP
 
 const rankOpts = [
     {name: '[-] Civilian', value: 50},
-    {name: '[VA] Veterans Affairs', value: 100},
+    {name: '[VA] Veterans Affairs', value: 80},
+    {name: '[JFC] Joint Force Command', value: 85},
     {name: '[E-1] Private', value: 101},
     {name: '[E-2] Private Second Class', value: 102},
     {name: '[E-3] Private First Class', value: 103},
@@ -31,7 +32,6 @@ const rankOpts = [
     {name: '[O-3] Captain', value: 202},
     {name: '[O-4] Major', value: 203},
     {name: '[O-5] Lieutenant Colonel', value: 204},
-    {name: '[O-6] Colonel', value: 205},
 ]
 
 module.exports = {

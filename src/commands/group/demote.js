@@ -142,7 +142,9 @@ module.exports = {
             }
 
             let nextRank;
-            if (targetRank === 100) nextRank = 50;
+            if (targetRank === 80) nextRank = 50;
+            else if (targetRank === 85) nextRank = 80;
+            else if (targetRank === 101) nextRank = 85;
             else if (targetRank === 150) nextRank = 112;
             else if (targetRank === 200) nextRank = 154;
             else nextRank = targetRank - 1;
