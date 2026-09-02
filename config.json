@@ -1,5 +1,10 @@
 {
     "group": 14291077,
+
+    "server": {
+        "PRODUCTION": "950210517673312289",
+        "TESTING": "1456389221790257236"
+    },
     
     "clearances": {
         "General-Public": {
@@ -108,6 +113,18 @@
         "honeypot": {
             "PRODUCTION": "1525272458993733814",
             "TESTING": "1525258159596503131"
+        },
+
+        "serverstats": {
+            "humans": {
+                "PRODUCTION": "1544743065636577381",
+                "TESTING": "1544731997975609415"
+            },
+
+            "all": {
+                "PRODUCTION": "1544743159949697064",
+                "TESTING": "1544732059040219247"
+            }
         }
     },
 
