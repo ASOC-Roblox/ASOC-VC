@@ -4,7 +4,7 @@ const { Colors, ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder, 
 const { getInfoInGroup } = require(`${PROJECT_ROOT}/lib/roblox-api`);
 const { getRobloxUserFromDiscord } = require(`${PROJECT_ROOT}/utils/robloxUserInfo`);
 const config = require(`${PROJECT_ROOT}/config.json`);
-const UserStats = require(`${PROJECT_ROOT}/data/UserStats`);
+const UserStats = require(`${PROJECT_ROOT}/data/schemas/UserStats`);
 
 module.exports = {
     data: new SlashCommandBuilder()

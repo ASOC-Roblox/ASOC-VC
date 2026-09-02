@@ -1,7 +1,7 @@
 "use strict";
 
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags,  Colors, Message, RoleSelectMenuBuilder } = require('discord.js');
-const verificationDB = require(`${PROJECT_ROOT}/data/UserVerification`);
+const verificationDB = require(`${PROJECT_ROOT}/data/schemas/UserVerification`);
 
 module.exports = {
     data: new SlashCommandBuilder()

@@ -1,7 +1,7 @@
 "use strict";
 
 const { EmbedBuilder, SlashCommandBuilder, Colors, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
-const SnapshotData = require(`${PROJECT_ROOT}/data/ServerSnapshot`);
+const SnapshotData = require(`${PROJECT_ROOT}/data/schemas/ServerSnapshot`);
 
 module.exports = {
     data: new SlashCommandBuilder()

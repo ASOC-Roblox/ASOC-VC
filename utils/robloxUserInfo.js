@@ -1,7 +1,7 @@
 "use strict";
 
 const { getUserInfo, getIdFromUsername, getUsernameFromId } = require(`${PROJECT_ROOT}/lib/roblox-api.js`)
-const VerificationData = require(`${PROJECT_ROOT}/data/UserVerification`);
+const VerificationData = require(`${PROJECT_ROOT}/data/schemas/UserVerification`);
 
 async function getRobloxUserFromNameOrId(info) {
     let user;

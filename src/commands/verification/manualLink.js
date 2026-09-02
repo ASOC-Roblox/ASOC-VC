@@ -2,7 +2,7 @@
 
 const { EmbedBuilder, MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction, Colors } = require('discord.js');
 const { getRobloxUserFromNameOrId } = require(`${PROJECT_ROOT}/utils/robloxUserInfo.js`);
-const VerificationData = require(`${PROJECT_ROOT}/data/UserVerification`);
+const VerificationData = require(`${PROJECT_ROOT}/data/schemas/UserVerification`);
 const isModerator = require(`${PROJECT_ROOT}/src/validations/isModerator.js`);
 
 module.exports = {

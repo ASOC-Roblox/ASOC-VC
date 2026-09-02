@@ -1,8 +1,7 @@
 "use strict";
 
-const { Embed } = require('discord.js');
 const { EmbedBuilder, SlashCommandBuilder, MessageFlags, Colors } = require('discord.js');
-const UserStats = require(`${PROJECT_ROOT}/data/UserStats`);
+const UserStats = require(`${PROJECT_ROOT}/data/schemas/UserStats`);
 
 module.exports = {
     data: new SlashCommandBuilder()

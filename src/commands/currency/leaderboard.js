@@ -1,7 +1,7 @@
 "use strict";
 
 const { EmbedBuilder, SlashCommandBuilder, Colors, MessageFlags, ChatInputCommandInteraction, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
-const UserStats = require(`${PROJECT_ROOT}/data/UserStats`);
+const UserStats = require(`${PROJECT_ROOT}/data/schemas/UserStats`);
 const config = require(`${PROJECT_ROOT}/config.json`);
 
 /**

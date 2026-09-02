@@ -1,7 +1,7 @@
 "use strict";
 
 const { MessageFlags, EmbedBuilder, SlashCommandBuilder, Colors, ChatInputCommandInteraction, ChannelType } = require('discord.js');
-const ServerSnapshot = require(`${PROJECT_ROOT}/data/ServerSnapshot`);
+const ServerSnapshot = require(`${PROJECT_ROOT}/data/schemas/ServerSnapshot`);
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -75,9 +75,8 @@ module.exports = {
                 bitrate: channel.bitrate ?? null,
                 userLimit: channel.userLimit ?? null,
 
-                permissionOverwrites: Array.from(
-                    channel.permissionOverwrites.cache.values()
-                ).map(overwrite => ({
+                permissionOverwrites: Array.from(channel.permissionOverwrites.cache.values())
+                .map(overwrite => ({
                     id: overwrite.id,
                     type: overwrite.type,
                     allow: overwrite.allow.bitfield.toString(),
